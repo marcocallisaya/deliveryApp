@@ -48,5 +48,20 @@
        </div>
      
   
-    <ion-button color="tertiary" (click)="ver()" expand="block" fill="solid"> Ver Carrito</ion-button>
+    
+       <ion-item>
+        <ion-label>Seleccione una Sucursal</ion-label>
+        <ion-select  [(ngModel)]="sucursal" okText="Ok" cancelText="Cerrar">
+          <ion-select-option *ngFor="let sucursal of sucursals" [value]="sucursal.identificador">{{sucursal.nombre}}</ion-select-option>
+          
+        </ion-select>
+      </ion-item>
+    <ion-button color="primary" (click)="sendpedido()" expand="block" fill="solid"> Confirmar Pedido</ion-button>
+    
+    <br>
+    <ion-input placeholder="Monto a Adelantar" [(ngModel)]="montoAdelantado"></ion-input>
+    <ion-input [(ngModel)]="fechaEntregar" type="date"></ion-input>
+    <ion-button color="secondary" (click)="reserva()" expand="block" fill="solid"> Hacer Reserva</ion-button>
+
+    <input type="date" *ngIf="fecha">
 </ion-content>

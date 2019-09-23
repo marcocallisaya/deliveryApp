@@ -6,4 +6,47 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+    <table>
+
+        <tr>
+      
+          <th>Producto</th>
+      
+          <th>Precio</th>
+      
+          <th>Cantidad</th>
+
+          <th>Cantidad</th>
+
+          <th>Quitar</th>
+      
+        </tr>
+      
+        <tr *ngFor="let carrito of carritos; index as i">
+      
+          <td>{{carrito.producto_id}}</td>
+      
+          <td>{{carrito.price}}</td>
+      
+          <td>{{carrito.quantity}}</td>
+      
+          <td>{{carrito.subtotal}}</td>
+
+          <td><ion-button color="danger" (click)="eliminar(i,carrito.subtotal)"><ion-icon name="remove-circle"></ion-icon></ion-button></td>
+        </tr>
+      
+      
+      </table>
+       <div class="row">
+         <div class="col-6">
+
+         </div>
+         <div class="col-6">
+          <h4>El total es {{total}}</h4>
+        </div>
+       </div>
+     
+  
+    <ion-button color="tertiary" (click)="ver()" expand="block" fill="solid"> Ver Carrito</ion-button>
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <mat-card class="example-card">
+               
+                 
+        <mat-card-header>
+     
+        <mat-card-title >PRODUCTO N°{{dato.identificador}}</mat-card-title>
+
+      
+      </mat-card-header>
+ 
+      
+  
+    <mat-card-content>
+      <label> <b>Nombre :</b> {{dato.nombre}}</label> <br>
+      <label> <b>Precio :</b>  {{dato.precio|number:'1.2'|currency:'Bs '}}</label> <br>
+      <label> <b>Stock :</b>  {{dato.stock}}</label> <br>
+      
+      <div class="imagen row">
+        <div class="col-6 offset-3">
+            <img [src]="dato.img" alt="">
+        </div>
+      
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="row justify-content-around">
+        <div class="col-3">
+            <ion-button color="primary" routerLink="/tabs/tab1" > Volver </ion-button>
+        </div>
+        <div class="col-2"></div>
+      <div class="col-5">
+          <ion-button color="success" (click)="add()"><ion-icon name="add"></ion-icon></ion-button>
+          <ion-button color="danger" (click)="remove()"> <ion-icon name="remove"></ion-icon></ion-button> 
+         
+         
+      </div>
+      <div class="col-1">
+        <h2>{{cantidad}}</h2>  
+      </div>
+      <div class="col-1">
+
+      </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-12">
+            <ion-button color="tertiary" (click)="send()" expand="block" fill="solid"> Agregar a Carrito<ion-icon name="cart"></ion-icon></ion-button>
+        </div>
+      </div>
+        
+        
+       
+        
+    </mat-card-actions>
+  </mat-card>
+  
+</ion-content>

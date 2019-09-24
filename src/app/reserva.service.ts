@@ -14,4 +14,10 @@ export class ReservaService {
   {
     return this.http.post<any>('http://127.0.0.1:8000/reservas',data);
   }
+
+  reservaOne(id:number):Observable<any>
+  {
+    
+    return this.http.get<any>(`${'http://127.0.0.1:8000/reservas/'}${id}`);
+  }
 }

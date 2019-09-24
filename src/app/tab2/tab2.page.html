@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+     Hola {{user.name}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -56,12 +56,25 @@
           
         </ion-select>
       </ion-item>
-    <ion-button color="primary" (click)="sendpedido()" expand="block" fill="solid"> Confirmar Pedido</ion-button>
+      <ion-item>
+        <ion-label>Servicio</ion-label>
+        <ion-select  [(ngModel)]="tipo"  okText="Ok" cancelText="Cerrar" (ionChange)='f(tipo)'>
+          <ion-select-option value="pedido">Pedido</ion-select-option>
+          <ion-select-option value="reserva">reserva</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    <ion-button *ngIf="tipo" color="primary" (click)="sendpedido()" expand="block" fill="solid"> Confirmar Pedido</ion-button>
     
     <br>
-    <ion-input placeholder="Monto a Adelantar" [(ngModel)]="montoAdelantado"></ion-input>
+
+    <div class="reserva" *ngIf="!tipo">
+      <ion-input placeholder="Monto a Adelantar" [(ngModel)]="montoAdelantado"></ion-input>
     <ion-input [(ngModel)]="fechaEntregar" type="date"></ion-input>
-    <ion-button color="secondary" (click)="reserva()" expand="block" fill="solid"> Hacer Reserva</ion-button>
+  
 
     <input type="date" *ngIf="fecha">
+    <ion-button color="secondary" (click)="reserva()" expand="block" fill="solid"> Hacer Reserva</ion-button>
+    </div>
+    
 </ion-content>

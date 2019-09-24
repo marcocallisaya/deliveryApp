@@ -1,11 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Four
+      Hasta luego {{user.name}} .......
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, mollitia! Nostrum expedita blanditiis consectetur amet enim sed placeat, dolor beatae dolore praesentium quos unde! Totam quidem maiores nam sunt sapiente?
+  Realmente desea Salir
+  <ion-button color="primary" (click)='logout($event)' *ngIf="loggedIn" expand="block" fill="solid"> Si, sacame de aqui </ion-button>
+ 
 </ion-content>

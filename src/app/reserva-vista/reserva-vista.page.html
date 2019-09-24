@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>reservaVista</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="row">
+        <div class="offset-2 col-8">
+            <mat-card class="example-card">
+               
+                 
+                    <mat-card-header>
+                 
+                    <mat-card-title >RESERVA N°{{dato.identificador}}</mat-card-title>
+    
+                  
+                  </mat-card-header>
+             
+                  
+              
+                <mat-card-content>
+            
+                  <label> <b>Monto Pendiente:</b>  {{dato. montoPendiente|number:'1.2'|currency:'Bs '}}</label> <br>
+                  <label> <b>Monto Adelantado :</b>  {{dato. montoAdelantado|number:'1.2'|currency:'Bs '}}</label> <br>
+                  <label> <b>Fecha de Entrega :</b>  {{dato.fechaEntrega}}</label> <br>
+                  <label> <b>Pedido :</b>  {{dato.pedido}}</label> <br>
+                </mat-card-content>
+                <mat-card-actions>
+                        <button class="btn btn-block btn-lg btn-primary" routerLink="/menu/tabs/tab3">Volver Atras</button>
+                </mat-card-actions>
+              </mat-card>
+        </div>
+    </div>
+    
+</ion-content>

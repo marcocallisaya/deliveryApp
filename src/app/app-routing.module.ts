@@ -1,13 +1,28 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AfterloginService } from './afterlogin.service';
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    path: 'menu',
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
+    canActivate:[AfterloginService]
+  
   },
-  { path: 'tab4', loadChildren: './tab4/tab4.module#Tab4PageModule' },
-  { path: 'producto', loadChildren: './producto/producto.module#ProductoPageModule' }
+  {
+    path: 'registro',
+    loadChildren: () => import('./registro/registro.module').then(m => m.RegistroPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
+  },
+  {
+    path:'',
+    redirectTo:'login',pathMatch:'full'
+  },
+  { path: 'reserva-vista', loadChildren: './reserva-vista/reserva-vista.module#ReservaVistaPageModule' },
+  { path: 'pedido-vista', loadChildren: './pedido-vista/pedido-vista.module#PedidoVistaPageModule' }
 ];
 @NgModule({
   imports: [

@@ -1,26 +1,110 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Three
+      Hola {{user.name}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="row">
-    <div class="col-6 offset-3">
-        <br>
-        <br>
-        <br>
-        <mat-form-field>
-          <mat-label>Favorite food</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-              {{food.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+    
+   
+    <div class="row justify-content-right">
+        <div class="col-6 ">
+          <button (click)="cargarAdm()" class="btn btn-secondary btn-block">Ver Pedidos</button>
+        </div>
+        <div class="col-6 ">
+            <button (click)="cargarChr()" class="btn btn-secondary btn-block">Ver Reservas</button>
+          </div>
     </div>
-  </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <table *ngIf="reservaBandera" mat-table [dataSource]="reservas" class="mat-elevation-z8">
+    
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+              
+                <!-- Position Column -->
+                <ng-container matColumnDef="identificador">
+                  <th mat-header-cell *matHeaderCellDef> Id </th>
+                  <td mat-cell *matCellDef="let element"> {{element.identificador}} </td>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="A Cuenta">
+                  <th mat-header-cell *matHeaderCellDef class="text-center"> A Cuenta </th>
+                  <td mat-cell *matCellDef="let element"> {{element.montoAdelantado}} </td>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Pendiente">
+                  <th mat-header-cell *matHeaderCellDef class="text-center"> Pendiente</th>
+                  <td mat-cell *matCellDef="let element"> {{element.montoPendiente}} </td>
+                </ng-container>
+              
+                <!-- Symbol Column -->
+
+                      <ng-container matColumnDef="ver">
+                        <th mat-header-cell *matHeaderCellDef class="text-center"> Ver </th>
+                        <td mat-cell *matCellDef="let element" class="text-center"> 
+                           <!--  <ion-button color="primary" 
+                            [routerLink]="['/menu/tabs/tab1/producto', producto.identificador]"
+                            ><ion-icon size="large" name="eye"></ion-icon></ion-button> -->
+                           <button class="btn btn-success btn-sm" [routerLink]="['/menu/tabs/tab3/reserva', element.identificador]">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon">remove_red_eye</mat-icon>
+                           </button> 
+                          
+                         </td>
+                      
+                      </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+              </table>
+              <table *ngIf="pedidoBandera" mat-table [dataSource]="pedidos" class="mat-elevation-z8">
+    
+                  <!--- Note that these columns can be defined in any order.
+                        The actual rendered columns are set as a property on the row definition" -->
+                
+                  <!-- Position Column -->
+                  <ng-container matColumnDef="identificador">
+                    <th mat-header-cell *matHeaderCellDef> Id </th>
+                    <td mat-cell *matCellDef="let element"> {{element.identificador}} </td>
+                  </ng-container>
+                
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="precio">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Precio </th>
+                    <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+                  </ng-container>
+                
+                  <!-- Weight Column -->
+                  <ng-container matColumnDef="estado">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Estado</th>
+                    <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+                  </ng-container>
+                
+                  <!-- Symbol Column -->
+
+                        <ng-container matColumnDef="ver">
+                          <th mat-header-cell *matHeaderCellDef class="text-center"> Ver </th>
+                          <td mat-cell *matCellDef="let element" class="text-center"> 
+                              <button class="btn btn-success btn-sm" [routerLink]="['/menu/tabs/tab3/pedido', element.identificador]">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon">remove_red_eye</mat-icon>
+                           </button> 
+                            
+                           </td>
+                        
+                        </ng-container>
+       
+                       
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+        </div>
+    </div>
+    
  
 </ion-content>

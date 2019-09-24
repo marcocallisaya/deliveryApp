@@ -39,7 +39,17 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../tab3/tab3.module').then(m => m.Tab3PageModule)
-          }
+          },
+          {
+            path: 'pedido/:id',
+            loadChildren: () =>
+              import('../pedido-vista/pedido-vista.module').then(m => m.PedidoVistaPageModule)
+          },
+          {
+            path: 'reserva/:id',
+            loadChildren: () =>
+              import('../reserva-vista/reserva-vista.module').then(m => m.ReservaVistaPageModule)
+          },
         ]
       },
       {

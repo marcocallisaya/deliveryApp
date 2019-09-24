@@ -7,6 +7,7 @@ import { AlertController } from '@ionic/angular';
 import { SucursalService } from '../sucursal.service';
 import { reserva } from '../reserva.model';
 import { ReservaService } from '../reserva.service';
+import { TokenService } from '../token.service';
 
 
 @Component({
@@ -17,15 +18,32 @@ import { ReservaService } from '../reserva.service';
 export class Tab2Page implements OnInit{
 
   carritos:any[];
-  constructor(public carrito:CarritoService,private pedido:PedidoService,public alertController: AlertController,private Sucursal:SucursalService,private RS:ReservaService) {}
+  constructor(public carrito:CarritoService,private pedido:PedidoService,public alertController: AlertController,private Sucursal:SucursalService,private RS:ReservaService,private token:TokenService) {}
   total:any=0;
   fecha;
   sucursal:number;
   sucursals:any[];
   pedidos:any[];
+  tipo=true;
+  
   id_ultimo_pedido:number;
   montoAdelantado;
   fechaEntregar;
+
+  user:any = {
+    carnet: "",
+    created_at: "",
+    deleted_at: null,
+    direction: "",
+    email: "",
+    id: 2,
+    lastname: "",
+    name: "",
+    phone: "",
+    remember_token: "",
+    updated_at: "",
+      };
+
   Reserva:any={
     pedido:0,
     montoPendiente:0,
@@ -49,7 +67,7 @@ export class Tab2Page implements OnInit{
   ngOnInit()
   {
    this.Sucursal.sucursalAll().subscribe((res:any)=>this.sucursals = res.data);
-  
+   this.user=this.token.devolverUser();
   }
    
   
@@ -69,6 +87,20 @@ export class Tab2Page implements OnInit{
   {
    
     console.log(this.carrito.mostrar());
+  }
+
+  f(tipo)
+  {
+    if (tipo=='reserva')
+    {
+      this.tipo = false;
+    }
+
+    if (tipo=='pedido')
+    {
+      this.tipo = true;
+    }
+    
   }
 
   eliminar(i:number,subtotal)

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from '../categoria.service';
 import { categoria } from '../categoria.model';
 import { producto } from '../producto.model';
+import { TokenService } from '../token.service';
 
 @Component({
   selector: 'app-tab1',
@@ -10,8 +11,21 @@ import { producto } from '../producto.model';
 })
 export class Tab1Page implements OnInit{
 
-  constructor(private categoria:CategoriaService) {}
-
+  constructor(private categoria:CategoriaService,private token:TokenService) {}
+  
+  user:any = {
+carnet: "",
+created_at: "",
+deleted_at: null,
+direction: "",
+email: "",
+id: 2,
+lastname: "",
+name: "",
+phone: "",
+remember_token: "",
+updated_at: "",
+  };
   categorias:categoria[];
   products: producto[];
   dato = {
@@ -21,7 +35,7 @@ export class Tab1Page implements OnInit{
   {
     this.categoria.categoriaAll().subscribe((res:any)=>{this.categorias = res.data,console.log(res)});
 
-   
+    this.user=this.token.devolverUser();
   }
 
   f()

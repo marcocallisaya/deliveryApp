@@ -52,9 +52,9 @@ export class ProductoPage implements OnInit {
     if (this.cantidad>0)
     {
       const alert = await this.alertController.create({
-        header: 'Alert',
+       
         subHeader: 'Producto '+ this.dato.nombre,
-        message: 'Agregado exitosamente al carrito la cantidad de.'+ this.cantidad,
+        message: 'Agregado exitosamente al carrito',
         buttons: ['OK']
       });
       this.carro.producto_id = this.dato.identificador;

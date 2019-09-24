@@ -124,7 +124,7 @@ export class Tab2Page implements OnInit{
       this.Mypedido.administrador = 1;
       this.Mypedido.conductor = 2;
       this.Mypedido.cliente = 1;
-      this.Mypedido.estado = 'finalizado';
+      this.Mypedido.estado = 'espera';
       this.Mypedido.precio = this.total;
       console.log(this.Mypedido);
       this.pedido.send(this.Mypedido,this.sucursal).subscribe((res:any)=>console.log('Pedido realiado exitosamente con sucursal '+ this.sucursal));
